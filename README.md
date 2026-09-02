@@ -3,7 +3,57 @@
 > **Project Documentation & Implementation Hub**
 > 
 > **Last Updated:** 2026-09-03  
-> **Status:** ✅ PRODUCTION READY — ALL SERVICES OPERATIONAL
+> **Status:** ✅ PRODUCTION READY v0.1.0 — ALL SERVICES OPERATIONAL  
+> **Commit:** `312f761` (root)  
+> **Stack:** Laravel 11 + MariaDB 10.11 + Next.js 14 + FastAPI + Docker Compose
+
+---
+
+## 🚀 QUICK START
+
+```powershell
+# 1. Jalankan semua service
+cd C:\ai_agent\blueprint
+docker-compose up -d --build
+
+# 2. Verifikasi
+curl http://localhost:8001/api/health     # Laravel API
+curl http://localhost:8002/health          # AI Agent
+# Buka http://localhost:3000 di browser   # Frontend
+```
+
+---
+
+## 🌐 LIVE SERVICES
+
+| Service | URL | Container | Status |
+|---------|-----|-----------|--------|
+| **Frontend (Next.js)** | http://localhost:3000 | `rt-rw-frontend` | ✅ Running |
+| **Laravel API** | http://localhost:8001 | `rt-rw-api` | ✅ Running |
+| **AI Agent (FastAPI)** | http://localhost:8002 | `rt-rw-ai-agent` | ✅ Running |
+| **MariaDB** | localhost:3306 | `blueprint-mariadb-1` | ✅ Running |
+| **Redis** | localhost:6379 | `blueprint-redis-1` | ✅ Running |
+
+---
+
+## 🔐 API AUTHENTICATION
+
+Semua endpoint `/api/*` (kecuali `/api/health`) memerlukan token:
+
+```bash
+# Tanpa token → 401 Unauthorized
+curl http://localhost:8001/api/customers
+
+# Dengan token (via X-API-Token header) → 200 OK
+curl -H "X-API-Token: rt-rw-net-secret-2026" http://localhost:8001/api/customers
+
+# Atau via Bearer Token
+curl -H "Authorization: Bearer rt-rw-net-secret-2026" http://localhost:8001/api/customers
+```
+
+**Token default** (di `.env`): `rt-rw-net-secret-2026`  
+**File middleware:** `api/app/Http/Middleware/ApiTokenMiddleware.php`  
+**Konfigurasi:** `api/bootstrap/app.php` (alias `auth.api`)
 
 ---
 
