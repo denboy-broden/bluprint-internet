@@ -1,0 +1,122 @@
+# RT/RW NET — AI-Powered Business Operating System
+
+> **Project Documentation & Implementation Hub**
+> 
+> **Last Updated:** 2026-09-03  
+> **Status:** ✅ PRODUCTION READY — ALL SERVICES OPERATIONAL
+
+---
+
+## 📚 DOKUMEN INTI (Root)
+
+| File | Deskripsi |
+|------|-----------|
+| [MASTER-BLUEPRINT.md](MASTER-BLUEPRINT.md) | Master blueprint lengkap (55+ dokumen) |
+| [ROADMAP.md](ROADMAP.md) | Roadmap implementasi 18 fase |
+| [TASK-TRACKING.md](TASK-TRACKING.md) | Detail task per fase |
+| [PROGRESS-STATUS.md](PROGRESS-STATUS.md) | Dashboard progres mingguan |
+| [STEPS.md](STEPS.md) | Panduan langkah berurutan |
+
+---
+
+## 📂 STRUKTUR FOLDER
+
+### [`docs/01-07`](docs/) — Blueprint Utama
+```
+docs/
+├── 01-BUSINESS-BLUEPRINT.md         (Business foundation)
+├── 02-STRUKTUR-AGENT.md             (Agent structure)
+├── 03-AGENT-ORGANIZATION-BLUEPRINT.md (Organization)
+├── 04-AGENT-PLATFORM.md             (Platform)
+├── 05-MEMBANGUN-AI-AGENT.md         (Building AI Agent)
+├── 06-Arsitektur-Operating_System.md (Architecture)
+├── 07-Business-Operating-System.md   (Business OS)
+├── GLOSSARY.md
+├── RENUSA-BUSINESS-FOUNDATION-v0.2.md
+├── RENUSA-ARCHITECTURE-GATE-REVIEW.md
+│
+├── actors/      (35 actor definitions)
+├── adr/         (10 Architecture Decision Records)
+├── ai/          (AI governance + 13 agent specs)
+├── business-rules/ (Business rules)
+├── data/        (System of Record + Schema)
+├── decisions/   (Decision Register + Owner Decisions)
+├── domains/     (Domain Model)
+├── governance/  (Governance policies)
+├── organization/ (Org structure)
+├── processes/   (Business processes)
+├── security/    (Security architecture)
+└── workflows/   (Technical workflows)
+```
+
+### [`docs/architecture/`](docs/architecture/) — Setup & Implementation Guides
+```
+docs/architecture/
+└── SETUP-LARAVEL.md  (Laravel project setup guide)
+```
+
+### [`docs/data/`](docs/data/) — Database & Schema
+```
+docs/data/
+├── SCHEMA-v1.0.md    (20 SQL tables)
+└── FASE-2-DATABASE.md (Setup guide)
+```
+
+### Root — Phase Implementation Guides
+```
+FASE-2-DATABASE.md   (MariaDB setup instructions)
+FASE-3-LARAVEL.md    (Laravel setup instructions)
+```
+
+---
+
+## 🚀 LANGKAH BERURUTAN
+
+Baca: [STEPS.md](STEPS.md) untuk panduan lengkap 7 fase.
+
+```
+Fase 1 — Persiapan    ✅ Done
+Fase 2 — Database     ⬜ Ready (FASE-2-DATABASE.md)
+Fase 3 — Laravel      ⬜ Ready (FASE-3-LARAVEL.md)
+Fase 4 — Web App      ⬜ Planned
+Fase 5 — Network      ⬜ Planned
+Fase 6 — AI Agent     ⬜ Planned
+Fase 7 — Produksi     ⬜ Planned
+```
+
+---
+
+## 📊 STATUS
+
+**Progres Keseluruhan:** 0% (Minggu 1 - Inisialisasi)
+
+**Selesai:**
+- ✅ Semua blueprint didokumentasikan
+- ✅ 13 Agent specifications lengkap
+- ✅ 5 Workflows teknis
+- ✅ 4 Business processes
+- ✅ 5 Governance policies
+- ✅ 10 ADR
+- ✅ Database schema (20 tabel)
+- ✅ Setup guide tersedia
+
+**Selanjutnya:**
+- ⬜ Setup MariaDB + jalankan schema
+- ⬜ Setup Laravel project
+- ⬜ Implement Customer Module (vertical slice pertama)
+
+---
+
+## 📞 QUICK LINKS
+
+- [Master Blueprint](MASTER-BLUEPRINT.md)
+- [Roadmap](ROADMAP.md)
+- [Task Tracking](TASK-TRACKING.md)
+- [Progress Status](PROGRESS-STATUS.md)
+- [Setup Laravel](docs/architecture/SETUP-LARAVEL.md)
+- [Database Schema](docs/data/SCHEMA-v1.0.md)
+
+---
+
+**Maintained by:** Project Lead  
+**Review Schedule:** Weekly

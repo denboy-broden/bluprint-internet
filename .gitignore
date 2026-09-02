@@ -1,0 +1,4 @@
+﻿node_modules/
+.next/
+.env.copy
+*.log
