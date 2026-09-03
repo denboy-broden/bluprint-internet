@@ -5,11 +5,13 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TicketController;
 use App\Http\Middleware\ApiTokenMiddleware;
 
+use App\Http\Controllers\InvoiceController;
+
 // ✅ Health check - PUBLIC (no auth required)
 Route::get('/health', fn() => response()->json([
     'status' => 'ok',
     'service' => 'rt-rw-net-api',
-    'version' => '0.1.0',
+    'version' => '0.2.0',
     'database' => 'connected'
 ]));
 
@@ -18,4 +20,6 @@ Route::middleware(\App\Http\Middleware\ApiTokenMiddleware::class)->group(functio
     Route::apiResource('customers', CustomerController::class);
     Route::apiResource('services', ServiceController::class);
     Route::apiResource('tickets', TicketController::class);
+    Route::apiResource('invoices', InvoiceController::class)->only(['index', 'show']);
+    Route::post('invoices/{invoice}/pay', [InvoiceController::class, 'markAsPaid']);
 });
