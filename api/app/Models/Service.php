@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Service extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'service_id', 'customer_id', 'package_id',
         'olt_id', 'ont_id', 'router_id', 'status',

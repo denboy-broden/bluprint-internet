@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(\App\Http\Middleware\ApiTokenMiddleware::class);
+    }
+
     public function index(Request $request): JsonResponse
     {
         $query = Customer::query();
