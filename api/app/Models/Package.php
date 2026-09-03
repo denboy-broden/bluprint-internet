@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Package extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'package_id', 'name', 'speed_down', 'speed_up',
         'price_monthly', 'description', 'is_active',

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->decimal('balance', 12, 2)->default(0);
             $table->string('currency', 3)->default('IDR');
             $table->enum('status', ['ACTIVE', 'CLOSED'])->default('ACTIVE');
-            $table->timestamps();
         });
 
         Schema::create('cash_transactions', function (Blueprint $table) {
@@ -29,7 +28,6 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->unsignedBigInteger('reference_id')->nullable();
             $table->string('created_by', 50)->nullable();
-            $table->timestamps();
 
             $table->index('type');
         });
@@ -41,7 +39,6 @@ return new class extends Migration
             $table->enum('category', ['ASSET', 'LIABILITY', 'EQUITY', 'REVENUE', 'EXPENSE']);
             $table->string('parent_code', 20)->nullable();
             $table->boolean('is_active')->default(true);
-            $table->timestamps();
         });
 
         Schema::create('journal_entries', function (Blueprint $table) {
@@ -53,7 +50,6 @@ return new class extends Migration
             $table->string('created_by', 50)->nullable();
             $table->string('approved_by', 50)->nullable();
             $table->enum('status', ['DRAFT', 'POSTED', 'REVERSED'])->default('DRAFT');
-            $table->timestamps();
 
             $table->index('entry_date');
         });
@@ -64,7 +60,6 @@ return new class extends Migration
             $table->string('account_code', 20);
             $table->decimal('debit', 12, 2)->default(0);
             $table->decimal('credit', 12, 2)->default(0);
-            $table->timestamps();
 
             $table->foreign('entry_id')->references('id')->on('journal_entries')->onDelete('cascade');
             $table->foreign('account_code')->references('account_code')->on('chart_of_accounts');

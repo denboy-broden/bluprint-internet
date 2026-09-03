@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Stock extends Model
 {
+    public $timestamps = false;
     protected $table = 'stock';
 
     protected $fillable = [

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->decimal('lat', 10, 8)->nullable();
             $table->decimal('lng', 11, 8)->nullable();
             $table->enum('status', ['ACTIVE', 'OFFLINE', 'MAINTENANCE'])->default('ACTIVE');
-            $table->timestamps();
 
             $table->index('area');
             $table->index('status');
@@ -32,7 +31,6 @@ return new class extends Migration
             $table->string('serial_number', 100)->nullable();
             $table->enum('status', ['ACTIVE', 'OFFLINE', 'MAINTENANCE'])->default('ACTIVE');
             $table->string('ip_address', 15)->nullable();
-            $table->timestamps();
 
             $table->foreign('pop_id')->references('id')->on('pops')->onDelete('set null');
 
@@ -47,7 +45,6 @@ return new class extends Migration
             $table->string('ip_address', 15)->nullable();
             $table->string('model', 100)->nullable();
             $table->enum('status', ['ACTIVE', 'OFFLINE', 'MAINTENANCE'])->default('ACTIVE');
-            $table->timestamps();
 
             $table->foreign('pop_id')->references('id')->on('pops')->onDelete('set null');
         });
@@ -64,7 +61,6 @@ return new class extends Migration
             $table->unsignedBigInteger('service_id')->nullable();
             $table->string('assigned_ip', 15)->nullable();
             $table->decimal('signal_dbm', 6, 2)->nullable();
-            $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('set null');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('set null');

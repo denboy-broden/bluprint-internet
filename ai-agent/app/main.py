@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
 import os
+from .telegram_service import telegram_service
 
 app = FastAPI(title="RT/RW Net AI Agent", version="0.1.0")
 
@@ -88,3 +89,21 @@ async def customers_outstanding():
             "customers_outstanding": by_customer,
             "action": "Kirim notifikasi tagihan dan tawarkan opsi pembayaran."
         }
+
+# ============ Telegram Notification Feature ============
+
+@app.post("/ai/telegram/send-billing")
+async def send_billing_telegram(data: dict):
+    """Kirim notifikasi tagihan via Telegram (baru)"""
+    result = await telegram_service.send_billing_notification(data)
+    return {"status": "sent" if result.get("success") else "failed", "detail": result}
+
+@app.post("/ai/telegram/send-overdue")
+async def send_overdue_telegram(data: dict):
+    """Kirim notifikasi tunggakan via Telegram (baru)"""
+    result = await telegram_service.send_overdue_notification(
+        data.get("customer_name"),
+        float(data.get("total_debt", 0)),
+        int(data.get("invoice_count", 0))
+    )
+    return {"status": "sent" if result.get("success") else "failed", "detail": result}

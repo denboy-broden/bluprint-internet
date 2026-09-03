@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Olt extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'olt_id', 'pop_id', 'name', 'model',
         'serial_number', 'status', 'ip_address',

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Router extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'router_id', 'pop_id', 'name', 'ip_address',
         'model', 'status',

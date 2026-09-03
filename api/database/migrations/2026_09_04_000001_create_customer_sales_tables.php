@@ -35,7 +35,6 @@ return new class extends Migration
             $table->decimal('price_monthly', 12, 2);
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->timestamps();
 
             $table->index('is_active');
         });
@@ -54,7 +53,6 @@ return new class extends Migration
             $table->string('pppoe_password')->nullable();
             $table->string('assigned_ip', 15)->nullable();
             $table->integer('vlan_id')->nullable();
-            $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('restrict');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('set null');
@@ -87,7 +85,6 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->enum('status', ['DRAFT', 'ACTIVE', 'PAUSED', 'COMPLETED'])->default('DRAFT');
-            $table->timestamps();
 
             $table->index('status');
         });

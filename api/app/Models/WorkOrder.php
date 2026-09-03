@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class WorkOrder extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'work_order_id', 'ticket_id', 'customer_id', 'technician_id',
         'status', 'scheduled_date', 'completed_at', 'materials_used',

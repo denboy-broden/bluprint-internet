@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JournalEntry extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'entry_id', 'entry_date', 'description', 'reference',
         'created_by', 'approved_by', 'status',

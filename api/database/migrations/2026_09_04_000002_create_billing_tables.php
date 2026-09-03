@@ -40,7 +40,6 @@ return new class extends Migration
             $table->integer('quantity')->default(1);
             $table->decimal('unit_price', 12, 2);
             $table->decimal('amount', 12, 2);
-            $table->timestamps();
 
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
 

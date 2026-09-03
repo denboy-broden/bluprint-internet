@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ticket extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'ticket_id', 'customer_id', 'service_id',
         'category', 'priority', 'status',

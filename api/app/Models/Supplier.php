@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Supplier extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'supplier_id', 'company_name', 'contact_name',
         'phone', 'email', 'status',

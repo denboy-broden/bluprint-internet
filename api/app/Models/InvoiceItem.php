@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class InvoiceItem extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'invoice_id', 'description', 'quantity',
         'unit_price', 'amount',

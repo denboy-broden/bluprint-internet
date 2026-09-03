@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pop extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'pop_id', 'name', 'area', 'address',
         'lat', 'lng', 'status',

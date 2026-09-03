@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PurchaseOrder extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'po_id', 'supplier_id', 'status', 'total_amount',
         'approval_by',

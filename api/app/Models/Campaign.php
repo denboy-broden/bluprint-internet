@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'campaign_id', 'name', 'channel', 'budget',
         'cost_spent', 'start_date', 'end_date', 'status',

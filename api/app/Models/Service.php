@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Service extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'service_id', 'customer_id', 'package_id',
         'status', 'install_date', 'activation_date',

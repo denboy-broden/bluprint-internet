@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ChartOfAccount extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'account_code', 'account_name', 'category',
         'parent_code', 'is_active',

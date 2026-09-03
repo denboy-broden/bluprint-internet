@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('skills')->nullable();
             $table->enum('status', ['ACTIVE', 'OFFLINE', 'ON_LEAVE'])->default('ACTIVE');
-            $table->timestamps();
         });
 
         Schema::create('tickets', function (Blueprint $table) {
@@ -32,7 +31,6 @@ return new class extends Migration
             $table->text('resolution_notes')->nullable();
             $table->timestamp('sla_target_at')->nullable();
             $table->boolean('sla_breach')->default(false);
-            $table->timestamps();
 
             $table->foreign('assigned_tech')->references('id')->on('technicians')->onDelete('set null');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('restrict');
@@ -55,7 +53,6 @@ return new class extends Migration
             $table->integer('affected_customers')->default(0);
             $table->string('root_cause')->nullable();
             $table->string('recommendation')->nullable();
-            $table->timestamps();
 
             $table->foreign('pop_id')->references('id')->on('pops')->onDelete('set null');
 
@@ -73,7 +70,6 @@ return new class extends Migration
             $table->date('scheduled_date')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->json('materials_used')->nullable();
-            $table->timestamps();
 
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('set null');
             $table->foreign('technician_id')->references('id')->on('technicians')->onDelete('set null');

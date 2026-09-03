@@ -16,7 +16,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('unit', 20)->nullable();
             $table->decimal('price_unit', 12, 2)->nullable();
-            $table->timestamps();
         });
 
         Schema::create('warehouses', function (Blueprint $table) {
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->text('address')->nullable();
             $table->enum('status', ['ACTIVE', 'CLOSED'])->default('ACTIVE');
-            $table->timestamps();
         });
 
         Schema::create('stock', function (Blueprint $table) {
@@ -34,7 +32,6 @@ return new class extends Migration
             $table->unsignedBigInteger('warehouse_id')->nullable();
             $table->integer('quantity')->default(0);
             $table->integer('minimum_level')->default(10);
-            $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('restrict');
 
@@ -49,7 +46,6 @@ return new class extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('email')->nullable();
             $table->enum('status', ['ACTIVE', 'INACTIVE'])->default('ACTIVE');
-            $table->timestamps();
         });
 
         Schema::create('purchase_orders', function (Blueprint $table) {
@@ -59,7 +55,6 @@ return new class extends Migration
             $table->enum('status', ['DRAFT', 'APPROVED', 'SENT', 'RECEIVED', 'CLOSED'])->default('DRAFT');
             $table->decimal('total_amount', 12, 2)->nullable();
             $table->string('approval_by', 50)->nullable();
-            $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('set null');
 
@@ -75,7 +70,6 @@ return new class extends Migration
             $table->unsignedBigInteger('service_id')->nullable();
             $table->date('assigned_date')->nullable();
             $table->enum('status', ['DEPLOYED', 'IN_STOCK', 'MAINTENANCE', 'DECOMMISSIONED'])->default('IN_STOCK');
-            $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('set null');

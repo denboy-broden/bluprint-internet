@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Technician extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'tech_id', 'full_name', 'phone', 'skills', 'status',
     ];

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ont extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'ont_id', 'olt_id', 'router_id', 'serial_number',
         'mac_address', 'status', 'customer_id', 'service_id',

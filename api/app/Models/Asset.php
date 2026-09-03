@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Asset extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'asset_id', 'product_id', 'serial_number',
         'customer_id', 'service_id', 'assigned_date', 'status',

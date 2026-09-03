@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Incident extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'incident_id', 'pop_id', 'olt_id', 'router_id', 'title',
         'description', 'severity', 'status', 'affected_customers',

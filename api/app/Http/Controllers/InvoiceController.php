@@ -10,7 +10,7 @@ class InvoiceController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $query = Invoice::with(['customer', 'service']);
+        $query = Invoice::with(['customer', 'service', 'items', 'payments']);
 
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -25,14 +25,13 @@ class InvoiceController extends Controller
 
     public function show(Invoice $invoice): JsonResponse
     {
-        return response()->json($invoice->load(['customer', 'service']));
+        return response()->json($invoice->load(['customer', 'service', 'items', 'payments']));
     }
 
     public function markAsPaid(Invoice $invoice): JsonResponse
     {
         $invoice->update([
             'status' => 'PAID',
-            'paid_at' => now(),
         ]);
 
         return response()->json([

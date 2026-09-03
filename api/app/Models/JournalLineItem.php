@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class JournalLineItem extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'entry_id', 'account_code', 'debit', 'credit',
     ];

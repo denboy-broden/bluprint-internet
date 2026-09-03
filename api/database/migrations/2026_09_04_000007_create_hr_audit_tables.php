@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('department', 50)->nullable();
             $table->date('hire_date')->nullable();
             $table->enum('status', ['ACTIVE', 'ON_LEAVE', 'TERMINATED'])->default('ACTIVE');
-            $table->timestamps();
 
             $table->index('department');
         });
