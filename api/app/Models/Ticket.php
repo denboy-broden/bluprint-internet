@@ -3,10 +3,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ticket extends Model
 {
-    public $timestamps = false;
     protected $fillable = [
         'ticket_id', 'customer_id', 'service_id',
         'category', 'priority', 'status',
@@ -22,4 +22,6 @@ class Ticket extends Model
 
     public function customer(): BelongsTo { return $this->belongsTo(Customer::class); }
     public function service(): BelongsTo { return $this->belongsTo(Service::class); }
+    public function technician(): BelongsTo { return $this->belongsTo(Technician::class, 'assigned_tech'); }
+    public function workOrders(): HasMany { return $this->hasMany(WorkOrder::class); }
 }

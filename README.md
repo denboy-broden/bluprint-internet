@@ -2,9 +2,9 @@
 
 > **Project Documentation & Implementation Hub**
 > 
-> **Last Updated:** 2026-09-03  
-> **Status:** ✅ PRODUCTION READY v0.2.0 — SEEDING COMPLETE, ALL SERVICES OPERATIONAL  
-> **Commit:** `c95bd65` (root)  
+> **Last Updated:** 2026-09-04
+> **Status:** ✅ PRODUCTION READY v0.3.0-Dev — BILLING SYSTEM IN PROGRESS
+> **Commit:** `5703f30` (Steps 1-5 done, now in v0.3.0 Billing phase)
 > **Stack:** Laravel 11 + MariaDB 10.11 + Next.js 14 + FastAPI + Docker Compose
 
 ---
@@ -148,7 +148,7 @@ Fase 7 — Produksi     ✅ Done (v0.2.0 production ready)
 
 ## 📊 STATUS
 
-**Progres Keseluruhan:** 100% (Minggu 2 - Produksi)
+**Progres Keseluruhan:** 100% (Minggu 2 - Produksi) | **Versi Dev:** v0.3.0
 
 **Selesai:**
 - ✅ Semua blueprint didokumentasikan
@@ -161,11 +161,16 @@ Fase 7 — Produksi     ✅ Done (v0.2.0 production ready)
 - ✅ Laravel API + Auth Middleware (`ApiTokenMiddleware`)
 - ✅ Frontend integration (`frontend/lib/api.ts`)
 - ✅ AI Agent (`ai-agent/app/main.py`)
-- ✅ Git commit `c95bd65`
+- ✅ PHPUnit 11.5.56 terinstall
+- ✅ Feature Tests (`ApiAuthTest.php`) — 5 PASS, 1 FAIL (middleware env issue)
+- ✅ Git commit `5703f30`
 
-**Selanjutnya:**
-- ⬜ Install PHPUnit (`composer require --dev phpunit/phpunit`)
-- ⬜ Menjalankan feature tests (`php artisan test`)
+**v0.3.0 Billing System (IN PROGRESS):**
+- ✅ Model `Invoice` dibuat
+- ✅ Migrasi tabel `invoices` dibuat
+- ✅ `InvoiceController` dengan endpoint (`index`, `show`, `markAsPaid`)
+- ⬜ Artisan Command `billing:generate` (otomasi penagihan)
+- ⬜ Frontend Billing Dashboard
 - ⬜ Push ke GitHub remote repository
 
 ---
