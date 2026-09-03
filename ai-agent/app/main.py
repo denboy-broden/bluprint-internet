@@ -41,3 +41,50 @@ async def analyze_tickets():
             summary["by_status"][status] = summary["by_status"].get(status, 0) + 1
             summary["by_priority"][priority] = summary["by_priority"].get(priority, 0) + 1
         return summary
+
+# ============ AI Agent Billing Integration (STEP-10) ============
+
+@app.get("/ai/billing/summary")
+async def billing_summary():
+    """AI Agent: Menganalisis ringkasan tagihan pelanggan"""
+    async with httpx.AsyncClient() as client:
+        r = await client.get(f"{API_BASE}/invoices", headers={"X-API-Token": os.getenv("API_TOKEN", "rt-rw-net-secret-2026")})
+        invoices = r.json().get("data", [])
+
+        total_pending = sum(1 for inv in invoices if inv.get("status") == "PENDING")
+        total_paid = sum(1 for inv in invoices if inv.get("status") == "PAID")
+        total_amount_pending = sum(float(inv.get("amount", 0)) for inv in invoices if inv.get("status") == "PENDING")
+
+        return {
+            "message": "AI Billing Summary analyzed",
+            "total_invoices": len(invoices),
+            "pending": total_pending,
+            "paid": total_paid,
+            "pending_amount": total_amount_pending,
+            "observation": f"{total_pending} tagihan belum lunas. Total piutang: Rp {total_amount_pending:,.2f}",
+            "recommendation": "Fokuskan penagihan pada pelanggan dengan tagihan tertinggi.",
+            "risk": "Jika piutang terus meningkat, arus kas perusahaan akan terganggu."
+        }
+
+@app.get("/ai/billing/customers-outstanding")
+async def customers_outstanding():
+    """AI Agent: Menampilkan pelanggan dengan tagihan belum lunas"""
+    async with httpx.AsyncClient() as client:
+        r = await client.get(f"{API_BASE}/invoices?status=PENDING", headers={"X-API-Token": os.getenv("API_TOKEN", "rt-rw-net-secret-2026")})
+        invoices = r.json().get("data", [])
+
+        # Kelompokkan berdasarkan customer
+        by_customer = {}
+        for inv in invoices:
+            cid = inv.get("customer_id")
+            if cid not in by_customer:
+                by_customer[cid] = {"count": 0, "amount": 0, "invoice_numbers": []}
+            by_customer[cid]["count"] += 1
+            by_customer[cid]["amount"] += float(inv.get("amount", 0))
+            by_customer[cid]["invoice_numbers"].append(inv.get("invoice_number"))
+
+        return {
+            "message": "AI Agent: Pelanggan dengan tagihan belum lunas",
+            "customers_outstanding": by_customer,
+            "action": "Kirim notifikasi tagihan dan tawarkan opsi pembayaran."
+        }

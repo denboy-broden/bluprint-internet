@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Stock extends Model
 {
+    protected $table = 'stock';
+
     protected $fillable = [
         'product_id', 'warehouse_id', 'quantity', 'minimum_level',
     ];
